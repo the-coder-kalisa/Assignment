@@ -15,7 +15,7 @@ const SingleCatPage = () => {
     const getCatData = async () => {
       const data = await api.getSingleCatByID(id!);
       console.log(data);
-      setCurrentBreed!(data.breeds[0].name);
+      setCurrentBreed!(data.breeds[0].id);
       setCat(data);
     };
 
@@ -23,8 +23,9 @@ const SingleCatPage = () => {
   }, []);
   return (
     <Card
-      headStyle={{ background: "teal" }}
-      style={{ width: 600 }}
+      headStyle={{ background: "#f7f7f7", padding: "7px 13px", minHeight: "fit-content" }}
+      style={{ maxWidth: 600, margin: 10 }}
+      bodyStyle={{ padding: 0 }}
       title={
         <Button
           type="primary"
@@ -35,20 +36,28 @@ const SingleCatPage = () => {
           Back
         </Button>
       }
-      bodyStyle={{ padding: "0px 10px" }}
-      cover={
-        <img
-          src={cat?.url}
-          style={{ height: 400, objectFit: "cover", objectPosition: "top" }}
-        />
-      }
     >
-      <h3>{cat?.breeds[0].name}</h3>
-      <h5>Origin: {cat?.breeds[0].origin}</h5>
-      <h6>{cat?.breeds[0].temperament}</h6>
-      <div>{cat?.breeds[0].description}</div>
+      <Image src={cat?.url} />
+      <BreedDataContainer>
+        <h3>{cat?.breeds[0].name}</h3>
+        <h5>{`Origin: ${cat?.breeds[0].origin}`}</h5>
+        <h6>{cat?.breeds[0].temperament}</h6>
+        <div>{cat?.breeds[0].description}</div>
+      </BreedDataContainer>
     </Card>
   );
 };
+const BreedDataContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 5px 10px;
+`;
+const Image = styled.img`
+  height: 400px;
+  width: 100%;
+  object-fit: cover;
+  object-position: top;
+`;
 const Name = styled.h4``;
 export default SingleCatPage;

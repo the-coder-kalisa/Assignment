@@ -22,5 +22,6 @@ const CatCard: FC<{ cat: CartsImage }> = ({ cat }) => {
 const Image = styled.img`
   height: 200px;
   object-fit: cover;
+  object-position: top;
 `;
 export default CatCard;
