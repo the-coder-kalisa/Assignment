@@ -1,9 +1,10 @@
 import axios from "../lib/axios";
 import type { AxiosResponse } from "axios";
 import { Cat } from "../types/cats";
+import { Breed } from "../types/breed";
 
-const getBreeds = async (): Promise<string[]> => {
-  const breeds: AxiosResponse<string[]> = await axios.get("/breeds");
+const getBreeds = async (): Promise<Breed[]> => {
+  const breeds: AxiosResponse<Breed[]> = await axios.get("/breeds");
   return breeds.data;
 };
 

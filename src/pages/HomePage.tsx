@@ -1,15 +1,11 @@
 import { useContext, useEffect } from "react";
 import { CatsBreedContext } from "../context/CatsBreed";
-import api from "../services/api";
 
 const HomePage = () => {
+  const { breeds } = useContext(CatsBreedContext);
   useEffect(() => {
-    const getBreeds = async () => {
-        const breeds = await api.getBreeds();
-        console.log(breeds);
-    }
-    getBreeds();
-  }, []);
+    console.log(breeds);
+  },[breeds])
   return <div>home page</div>;
 };
 export default HomePage;
