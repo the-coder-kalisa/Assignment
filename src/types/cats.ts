@@ -1,7 +1,7 @@
+import { Breed } from "./breed";
+
 export interface Cat {
-    image: string;
-    breedName: string;
-    origin: string;
-    temperament: string;
-    description: string;
+    url: string;
+    id: string;
+    breeds: Breed[]
 }

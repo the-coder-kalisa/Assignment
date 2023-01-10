@@ -1,6 +1,4 @@
-export interface CartsImages {
+export interface CartsImage {
     id: string;
     url: string;
-    height: number;
-    width: number;
 }
