@@ -1,11 +1,14 @@
 import { useContext, useEffect } from "react";
+import SelectBreed from "../components/SelectBreed";
 import { CatsBreedContext } from "../context/CatsBreed";
 
 const HomePage = () => {
-  const { breeds } = useContext(CatsBreedContext);
-  useEffect(() => {
-    console.log(breeds);
-  },[breeds])
-  return <div>home page</div>;
+
+  return (
+    <div>
+      <SelectBreed />
+      
+    </div>
+  );
 };
 export default HomePage;
