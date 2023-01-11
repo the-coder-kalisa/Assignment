@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 const CatCard: FC<{ cat: CartsImage }> = ({ cat }) => {
   const navigate = useNavigate();
   return (
-    <Col span={6}>
       <Card cover={<Image src={cat.url} />}>
         <Button
           type="primary"
@@ -19,7 +18,6 @@ const CatCard: FC<{ cat: CartsImage }> = ({ cat }) => {
           View Details
         </Button>
       </Card>
-    </Col>
   );
 };
 

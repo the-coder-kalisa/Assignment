@@ -5,9 +5,9 @@ export interface IContext {
   breeds: Breed[] | null | undefined;
   cats: CartsImage[] | null | undefined;
   currentBreed: string | null;
-  page: number;
   loadingBreeds: boolean;
-  setPage: Dispatch<React.SetStateAction<number>> | null;
   setCurrentBreed: Dispatch<React.SetStateAction<string | null>> | null;
-  fetchNextPage: Function | null
+  fetchNextPage: Function | null;
+  hasNextPage: boolean;
+  loadingCats: boolean;
 }

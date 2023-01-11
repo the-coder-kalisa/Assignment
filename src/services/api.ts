@@ -2,7 +2,7 @@ import axios from "../lib/axios";
 import type { AxiosResponse } from "axios";
 import { Cat } from "../types/cats";
 import { Breed } from "../types/breed";
-import { CartsImage } from "../types/cartsImages";
+import { CartsImage as CatImageData } from "../types/cartsImages";
 
 const getBreeds = async (): Promise<Breed[]> => {
   const breeds: AxiosResponse<Breed[]> = await axios.get("/v1/breeds");
@@ -10,17 +10,19 @@ const getBreeds = async (): Promise<Breed[]> => {
 };
 
 const getCatsByBreedAndPage = async (breedId: string, page: number) => {
-  const catsByBreed: AxiosResponse<CartsImage[]> = await axios.get(
+  const catsByBreed: AxiosResponse<CatImageData[]> = await axios.get(
     `/v1/images/search?page=${page}&limit=10&breed_id=${breedId}`
   );
-  const nextPage = await axios.get(
-    `/v1/images/search?page=${page + 1}&limit=10&breed_id=${breedId}`
-  );
+  let hasNextPage = catsByBreed.data.length === 10;
+  if (hasNextPage) {
+    let nextPage = await axios.get(
+      `/v1/images/search?page=${page + 1}&limit=10&breed_id=${breedId}`
+    );
+    hasNextPage = !arraysEqual(catsByBreed.data, nextPage.data);
+  }
   return {
-    data: {
-      ...catsByBreed.data,
-    },
-    hasNextPage: !arraysEqual(catsByBreed.data, nextPage.data),
+    data: catsByBreed.data,
+    hasNextPage: hasNextPage,
     page,
   };
 };
@@ -37,6 +39,7 @@ function isEqual(obj1: any, obj2: any) {
   return Object.keys(obj1).every((key) => obj1[key] === obj2[key]);
 }
 const getSingleCatByID = async (catId: string): Promise<Cat> => {
+  console.log(catId);
   const cat: AxiosResponse<Cat> = await axios.get(`v1/images/${catId}`);
   return cat.data;
 };
