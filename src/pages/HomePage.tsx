@@ -1,5 +1,5 @@
 import { Button, Skeleton } from "antd";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import styled from "styled-components";
 import CatsCards from "../components/CatsCards";
 import SelectBreed from "../components/SelectBreed";

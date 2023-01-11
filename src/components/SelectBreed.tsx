@@ -1,4 +1,4 @@
-import { Col, Select } from "antd";
+import { Select } from "antd";
 import { useContext } from "react";
 import styled from "styled-components";
 import { CatsBreedContext } from "../context/CatsBreed";
