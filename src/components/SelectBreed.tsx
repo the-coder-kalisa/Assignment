@@ -3,37 +3,45 @@ import { useContext } from "react";
 import styled from "styled-components";
 import { CatsBreedContext } from "../context/CatsBreed";
 const SelectBreed = () => {
-  const { breeds, setCurrentBreed, currentBreed, loadingBreeds } =
+  const { breeds, setCurrentBreed, currentBreed, setPage, loadingBreeds } =
     useContext(CatsBreedContext);
 
   return breeds ? (
     <Container>
       <Title>cat browser</Title>
-      <span>Breed</span>
-      <Select
-      value={currentBreed}
-        onChange={(value: string) => {
-          setCurrentBreed!(value);
-        }}
-        placeholder="Select breed"
-        style={{ width: 200 }}
-        options={breeds.map((breed) => ({
-          label: breed.name,
-          value: breed.id,
-        }))}
-      />
+      <Selection>
+        <span>Breed</span>
+        <Select
+          value={currentBreed}
+          onChange={(value: string) => {
+           
+            setCurrentBreed!(value);
+          }}
+          placeholder="Select breed"
+          style={{ width: 200 }}
+          options={breeds.map((breed) => ({
+            label: breed.name,
+            value: breed.id,
+          }))}
+        />
+      </Selection>
     </Container>
   ) : (
     <div></div>
   );
 };
+const Selection = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+`;
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 15px;
 `;
 const Title = styled.h3`
   font-size: 25px;
   text-transform: capitalize;
-  font-family: sans-serif;
 `;
 export default SelectBreed;

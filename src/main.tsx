@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import CatsBreedProvider from "./context/CatsBreed";
 import { QueryClient, QueryClientProvider } from "react-query";
-import GlobalStyles from "./config/GlobalStyles";
+import GlobalStyles from "./styles/GlobalStyles";
 
 
 const queryClient = new QueryClient();

@@ -6,12 +6,23 @@ import SelectBreed from "../components/SelectBreed";
 import { CatsBreedContext } from "../context/CatsBreed";
 
 const HomePage = () => {
-    const {cats} = useContext(CatsBreedContext);
+  const { cats, setPage, fetchNextPage } = useContext(CatsBreedContext);
+
   return (
     <Container>
       <SelectBreed />
       <CatsCards />
-      <Button type="primary" danger disabled={cats!?.length === 0 || cats === null}>Load more</Button>
+      <Button
+        type="primary"
+        danger
+        onClick={() => {
+          fetchNextPage!();
+          // setPage!(page => page + 1);
+        }}
+        disabled={cats!?.length === 0 || !cats || !cats.length}
+      >
+        Load more
+      </Button>
     </Container>
   );
 };
