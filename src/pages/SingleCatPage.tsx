@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { useQuery } from "react-query";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
+import SingleCatPageSkeleton from "../components/Skeletons/SingleCatPageSkeleton";
 import { CatsBreedContext } from "../context/CatsBreed";
 import api from "../services/api";
 import NotFoundPage from "./NotFoundPage";
@@ -33,17 +34,7 @@ const SingleCatPage = () => {
   );
   // render both sekeletons, and cat data according to isLoading , isFetching
   return isLoading || isFetching ? (
-    <SkeletonContainer>
-      <Skeleton.Button active></Skeleton.Button>
-      <Skeleton.Image
-        active
-        style={{ width: "100%", minHeight: 400 }}
-      ></Skeleton.Image>
-      <Skeleton
-        paragraph={{ width: [150, 250, 200, "100%", "100%"], rows: 5 }}
-        title={{ width: 100 }}
-      ></Skeleton>
-    </SkeletonContainer>
+    <SingleCatPageSkeleton />
   ) : !cat?.breeds ? (
     <NotFoundPage />
   ) : (
@@ -76,15 +67,8 @@ const SingleCatPage = () => {
     </Card>
   );
 };
-const SkeletonContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  max-width: 600px;
-  border: 1px solid #ddd;
-  margin: 5px;
-  gap: 5px;
-  padding: 5px;
-`;
+
+// styles
 const BreedDataContainer = styled.div`
   display: flex;
   flex-direction: column;

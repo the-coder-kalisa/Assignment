@@ -2,6 +2,7 @@ import { Button, Skeleton } from "antd";
 import { useContext } from "react";
 import styled from "styled-components";
 import CatsCards from "../components/CatsCards";
+import HomePageSkeletons from "../components/Skeletons/HomePageSkeletons";
 import SelectBreed from "../components/SelectBreed";
 import { CatsBreedContext } from "../context/CatsBreed";
 
@@ -13,16 +14,7 @@ const HomePage = () => {
   return (
     <Container>
       {loadingBreeds ? (
-        <SkeletonContainer>
-          <Skeleton.Input active></Skeleton.Input>
-          <Skeleton
-            paragraph={{ rows: 1, width: [100] }}
-            active
-            title={false}
-          ></Skeleton>
-          <Skeleton.Input active></Skeleton.Input>
-          <Skeleton.Button active></Skeleton.Button>
-        </SkeletonContainer>
+        <HomePageSkeletons />
       ) : (
         <>
           <SelectBreed />
@@ -44,11 +36,7 @@ const HomePage = () => {
     </Container>
   );
 };
-const SkeletonContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
-`;
+
 const Container = styled.div`
   padding: 10px;
   display: flex;
