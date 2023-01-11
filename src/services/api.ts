@@ -47,7 +47,6 @@ const getCatsByBreedAndPage = async (breedId: string, page: number) => {
 
 // get single cat using specified id
 const getSingleCatByID = async (catId: string): Promise<Cat> => {
-  console.log(catId);
   const cat: AxiosResponse<Cat> = await axios.get(`v1/images/${catId}`);
   return cat.data;
 };

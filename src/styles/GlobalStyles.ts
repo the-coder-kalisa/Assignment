@@ -8,10 +8,10 @@ export default createGlobalStyle`
         box-sizing: border-box;
         font-family: sans-serif;
     }
-    :where(.css-dev-only-do-not-override-sk7ap8).ant-skeleton.ant-skeleton-element {
-        width: 100%;
+    .css-dev-only-do-not-override-sk7ap8.ant-skeleton.ant-skeleton-element {
+        width: 100% !important;
     }
-    :where(.css-dev-only-do-not-override-sk7ap8).ant-btn-primary:disabled {
-        opacity: 0.5;
+    .css-dev-only-do-not-override-sk7ap8.ant-btn-primary:disabled {
+        opacity: 0.5 !important;
     }
 `;
