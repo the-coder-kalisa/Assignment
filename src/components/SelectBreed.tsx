@@ -3,7 +3,7 @@ import { useContext } from "react";
 import styled from "styled-components";
 import { CatsBreedContext } from "../context/CatsBreed";
 const SelectBreed = () => {
-  const { breeds, setCurrentBreed, currentBreed, setPage, loadingBreeds } =
+  const { breeds, setCurrentBreed, currentBreed, loadingBreeds } =
     useContext(CatsBreedContext);
 
   return breeds ? (

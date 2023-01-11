@@ -16,7 +16,6 @@ const SingleCatPage = () => {
     data: cat,
     isLoading,
     isFetching,
-    error,
   } = useQuery(
     ["single-cat", id],
     async () => {
@@ -27,7 +26,7 @@ const SingleCatPage = () => {
     {
       enabled: !!id,
       refetchOnWindowFocus: false,
-      retry: false
+      retry: false,
     }
   );
   return isLoading || isFetching ? (

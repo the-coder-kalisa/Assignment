@@ -1,10 +1,10 @@
 import type { FC } from "react";
-import { CartsImage } from "../types/cartsImages";
+import { CatImageData } from "../types/cartsImages";
 import styled from "styled-components";
 import { Card, Button, Col } from "antd";
 import { useNavigate } from "react-router-dom";
 
-const CatCard: FC<{ cat: CartsImage }> = ({ cat }) => {
+const CatCard: FC<{ cat: CatImageData }> = ({ cat }) => {
   const navigate = useNavigate();
   return (
       <Card cover={<Image src={cat.url} />}>

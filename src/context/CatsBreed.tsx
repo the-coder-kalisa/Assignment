@@ -1,17 +1,10 @@
-import {
-  createContext,
-  useState,
-  useContext,
-  useEffect,
-  ReactNode,
-} from "react";
+import { createContext, useState, ReactNode, useEffect } from "react";
 import type { FC } from "react";
 import api from "../services/api";
 import { useInfiniteQuery, useQuery } from "react-query";
-import { Breed } from "../types/breed";
 import { IContext } from "../types/context";
-import { CartsImage } from "../types/cartsImages";
 
+// create catsBreed context
 export const CatsBreedContext = createContext<IContext>({
   breeds: null,
   cats: null,
@@ -23,16 +16,26 @@ export const CatsBreedContext = createContext<IContext>({
   hasNextPage: false,
 });
 
+// create catsbreed provider
 const CatsBreedProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [currentBreed, setCurrentBreed] = useState<null | string>(null);
   const [hasNextPage, setHasNextPage] = useState(false);
-  const { data, isLoading } = useQuery("breeds", api.getBreeds, {
+
+  // fetch breeds from api
+  const {
+    data,
+    isLoading,
+    isError: errorWhileFetchingBreeds,
+  } = useQuery("breeds", api.getBreeds, {
     refetchOnWindowFocus: false,
   });
+
+  // fetch cats according to currentBreed
   const {
     data: fetchedCatsData,
     fetchNextPage,
     isLoading: loadingCats,
+    isError: errorWhileFetchingCats,
   } = useInfiniteQuery(
     ["cats", currentBreed],
     async ({ pageParam = 1 }) => {
@@ -49,7 +52,18 @@ const CatsBreedProvider: FC<{ children: ReactNode }> = ({ children }) => {
       },
     }
   );
+
+  // arrange cats for better preview
   let cats = fetchedCatsData?.pages.map((page) => page.data);
+
+  // give error when there was error while fetching data
+  useEffect(() => {
+    if (errorWhileFetchingCats || errorWhileFetchingBreeds) {
+      alert(
+        "Apologies but we could not load new cats for you at this time! Miau!"
+      );
+    }
+  }, [errorWhileFetchingCats, errorWhileFetchingBreeds]);
   return (
     <CatsBreedContext.Provider
       value={{

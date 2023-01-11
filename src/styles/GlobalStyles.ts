@@ -1,5 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
+// privider default style to the app
 export default createGlobalStyle`
     *, *::after, *::before {
         margin: 0;

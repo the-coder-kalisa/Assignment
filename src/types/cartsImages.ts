@@ -1,4 +1,4 @@
-export interface CartsImage {
+export interface CatImageData {
     id: string;
     url: string;
 }
