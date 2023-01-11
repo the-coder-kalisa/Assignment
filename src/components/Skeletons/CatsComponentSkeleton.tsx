@@ -2,7 +2,7 @@ import { Skeleton } from "antd";
 import styled from "styled-components";
 
 export default function CatsComponentSkeleton() {
-    const sampleSkeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  const sampleSkeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   return (
     <SkeletonContainer>
       {sampleSkeletons.map((_, index) => (
@@ -19,7 +19,7 @@ export default function CatsComponentSkeleton() {
     </SkeletonContainer>
   );
 }
- const SingleSkeletonContainer = styled.div`
+const SingleSkeletonContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;

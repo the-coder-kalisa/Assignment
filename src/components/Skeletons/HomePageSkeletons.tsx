@@ -1,7 +1,7 @@
 import { Skeleton } from "antd";
 import styled from "styled-components";
 
-// create skeletons for home page 
+// create skeletons for home page
 export default function HomePageSkeletons() {
   return (
     <SkeletonContainer>
