@@ -1,18 +1,16 @@
 import { Button, Card, Skeleton } from "antd";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { useQuery } from "react-query";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import { CatsBreedContext } from "../context/CatsBreed";
 import api from "../services/api";
-import { Cat } from "../types/cats";
 import NotFoundPage from "./NotFoundPage";
 
 const SingleCatPage = () => {
-   
+  const navigate = useNavigate();
   // get id from url (:id)
   const { id } = useParams();
-  const navigate = useNavigate();
   const { setCurrentBreed } = useContext(CatsBreedContext);
 
   // get single cat data using id from api

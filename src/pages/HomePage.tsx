@@ -7,7 +7,7 @@ import { CatsBreedContext } from "../context/CatsBreed";
 
 const HomePage = () => {
   // get dat from context (Cats Breed context)
-  const { cats, fetchNextPage,hasNextPage, loadingBreeds } =
+  const { cats, fetchNextPage, hasNextPage, loadingBreeds } =
     useContext(CatsBreedContext);
 
   return (
@@ -15,7 +15,11 @@ const HomePage = () => {
       {loadingBreeds ? (
         <SkeletonContainer>
           <Skeleton.Input active></Skeleton.Input>
-          <Skeleton paragraph={{ rows: 1, width: [100] }} active title={false}></Skeleton>
+          <Skeleton
+            paragraph={{ rows: 1, width: [100] }}
+            active
+            title={false}
+          ></Skeleton>
           <Skeleton.Input active></Skeleton.Input>
           <Skeleton.Button active></Skeleton.Button>
         </SkeletonContainer>
@@ -25,11 +29,13 @@ const HomePage = () => {
           <CatsCards />
           <Button
             type="primary"
-            style={{background: "#20ab20", color:"white"}}
+            style={{ background: "#20ab20", color: "white" }}
             onClick={() => {
               fetchNextPage!();
             }}
-            disabled={cats!?.length === 0 || !cats || !cats.length || !hasNextPage}
+            disabled={
+              cats!?.length === 0 || !cats || !cats.length || !hasNextPage
+            }
           >
             Load more
           </Button>
