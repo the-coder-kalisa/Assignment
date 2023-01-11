@@ -3,7 +3,6 @@ import type { AxiosResponse } from "axios";
 import { Cat } from "../types/cats";
 import { Breed } from "../types/breed";
 import { CartsImage } from "../types/cartsImages";
-import _ from "lodash";
 
 const getBreeds = async (): Promise<Breed[]> => {
   const breeds: AxiosResponse<Breed[]> = await axios.get("/v1/breeds");
