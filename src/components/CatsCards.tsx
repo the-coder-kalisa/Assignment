@@ -5,8 +5,13 @@ import { CatsBreedContext } from "../context/CatsBreed";
 import CatCard from "./CatCard";
 
 const CatsCards = () => {
+  // get contextValues from catsbreedContext
   const { cats, loadingCats } = useContext(CatsBreedContext);
+
+  // create sample skeleton values to use during loading to help in mapping
   const sampleSkeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+  // render cats data according to loading and their availability
   return !cats && !loadingCats ? (
     <div>No Cats Available</div>
   ) : loadingCats ? (
@@ -31,6 +36,8 @@ const CatsCards = () => {
     </SkeletonContainer>
   );
 };
+
+// styles
 const SingleSkeletonContainer = styled.div`
   display: flex;
   flex-direction: column;

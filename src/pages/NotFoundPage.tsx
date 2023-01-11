@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const NotFoundPage = () => {
+  // not found page
   return <NotfundContainer>not found page</NotfundContainer>;
 };
 const NotfundContainer = styled.div`

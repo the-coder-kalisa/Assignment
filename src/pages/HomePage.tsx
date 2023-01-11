@@ -6,6 +6,7 @@ import SelectBreed from "../components/SelectBreed";
 import { CatsBreedContext } from "../context/CatsBreed";
 
 const HomePage = () => {
+  // get dat from context (Cats Breed context)
   const { cats, fetchNextPage,hasNextPage, loadingBreeds } =
     useContext(CatsBreedContext);
 

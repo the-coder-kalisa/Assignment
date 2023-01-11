@@ -20,7 +20,7 @@ const CatCard: FC<{ cat: CatImageData }> = ({ cat }) => {
       </Card>
   );
 };
-
+// styles
 const Image = styled.img`
   height: 200px;
   object-fit: cover;

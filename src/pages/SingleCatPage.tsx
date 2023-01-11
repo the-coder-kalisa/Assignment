@@ -9,9 +9,13 @@ import { Cat } from "../types/cats";
 import NotFoundPage from "./NotFoundPage";
 
 const SingleCatPage = () => {
+   
+  // get id from url (:id)
   const { id } = useParams();
   const navigate = useNavigate();
   const { setCurrentBreed } = useContext(CatsBreedContext);
+
+  // get single cat data using id from api
   const {
     data: cat,
     isLoading,
@@ -29,6 +33,7 @@ const SingleCatPage = () => {
       retry: false,
     }
   );
+  // render both sekeletons, and cat data according to isLoading , isFetching
   return isLoading || isFetching ? (
     <SkeletonContainer>
       <Skeleton.Button active></Skeleton.Button>

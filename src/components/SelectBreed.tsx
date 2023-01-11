@@ -3,9 +3,11 @@ import { useContext } from "react";
 import styled from "styled-components";
 import { CatsBreedContext } from "../context/CatsBreed";
 const SelectBreed = () => {
-  const { breeds, setCurrentBreed, currentBreed, loadingBreeds } =
+  // get context values from catsBreedContext
+  const { breeds, setCurrentBreed, currentBreed } =
     useContext(CatsBreedContext);
 
+  // render data according to the breeds availability
   return breeds ? (
     <Container>
       <Title>cat browser</Title>
@@ -14,7 +16,6 @@ const SelectBreed = () => {
         <Select
           value={currentBreed}
           onChange={(value: string) => {
-           
             setCurrentBreed!(value);
           }}
           placeholder="Select breed"
@@ -30,6 +31,8 @@ const SelectBreed = () => {
     <div></div>
   );
 };
+
+// styles
 const Selection = styled.div`
   display: flex;
   flex-direction: column;

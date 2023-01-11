@@ -30,7 +30,7 @@ const CatsBreedProvider: FC<{ children: ReactNode }> = ({ children }) => {
     refetchOnWindowFocus: false,
   });
 
-  // fetch cats according to currentBreed
+  // fetch cats according to currentBreed and page
   const {
     data: fetchedCatsData,
     fetchNextPage,
